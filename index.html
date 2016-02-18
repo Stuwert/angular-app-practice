@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='playground'>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Playground</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script src="model.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller='BindController as bind'>
+
+    <button ng-show="showField('addContractor')" ng-click="changeCurrent('form')">{{current}}</button>
+
+    <form ng-submit='addContractor()' ng-show="showField('form')">
+      <label for="">Contractor</label>
+      <input type="text" ng-model="name" value="">
+      <label for="">Price</label>
+      <input type="number" ng-model="rate" value="">
+      <input type="submit" name="name" value="Add">
+    </form>
+
+    <div ng-repeat='contractor in contractors'>
+      <p>
+        {{contractor.name}}
+      </p>
+      <p>
+        {{contractor.rate | currency}}
+      </p>
+    </div>
+
+
+
+  </body>
+</html>
